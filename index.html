@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Free Online Calculators - India</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #222;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    input, textarea, button {
+      width: 90%;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Free Online Calculator Hub 🇮🇳</h1>
+
+<!-- Percentage Calculator -->
+<div class="box">
+<h2>Percentage Calculator</h2>
+<input type="number" id="percent" placeholder="Enter percentage">
+<input type="number" id="number" placeholder="Enter number">
+<button onclick="calcPercent()">Calculate</button>
+<p id="percentResult"></p>
+</div>
+
+<!-- Age Calculator -->
+<div class="box">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button onclick="calcAge()">Calculate</button>
+<p id="ageResult"></p>
+</div>
+
+<!-- GST Calculator -->
+<div class="box">
+<h2>GST Calculator</h2>
+<input type="number" id="price" placeholder="Enter price">
+<input type="number" id="gst" placeholder="Enter GST %">
+<button onclick="calcGST()">Calculate</button>
+<p id="gstResult"></p>
+</div>
+
+<!-- EMI Calculator -->
+<div class="box">
+<h2>EMI Calculator</h2>
+<input type="number" id="loan" placeholder="Loan amount">
+<input type="number" id="rate" placeholder="Interest rate (%)">
+<input type="number" id="months" placeholder="Loan duration (months)">
+<button onclick="calcEMI()">Calculate</button>
+<p id="emiResult"></p>
+</div>
+
+<!-- BMI Calculator -->
+<div class="box">
+<h2>BMI Calculator</h2>
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (cm)">
+<button onclick="calcBMI()">Calculate</button>
+<p id="bmiResult"></p>
+</div>
+
+<!-- Word Counter -->
+<div class="box">
+<h2>Word Counter</h2>
+<textarea id="text" rows="4" placeholder="Enter text"></textarea>
+<button onclick="countWords()">Count Words</button>
+<p id="wordResult"></p>
+</div>
+
+<script>
+function calcPercent() {
+  let p = percent.value;
+  let n = number.value;
+  percentResult.innerText = "Result: " + (p/100*n);
+}
+
+function calcAge() {
+  let birth = new Date(dob.value);
+  let today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  ageResult.innerText = "Age: " + age + " years";
+}
+
+function calcGST() {
+  let p = price.value;
+  let g = gst.value;
+  let gstAmount = (p*g)/100;
+  gstResult.innerText = "GST: ₹" + gstAmount + 
+  " | Final: ₹" + (parseFloat(p)+gstAmount);
+}
+
+function calcEMI() {
+  let P = loan.value;
+  let R = rate.value/12/100;
+  let N = months.value;
+
+  let emi = (P*R*Math.pow(1+R,N))/
+            (Math.pow(1+R,N)-1);
+
+  emiResult.innerText = "Monthly EMI: ₹" + emi.toFixed(2);
+}
+
+function calcBMI() {
+  let w = weight.value;
+  let h = height.value/100;
+  let bmi = w/(h*h);
+  bmiResult.innerText = "BMI: " + bmi.toFixed(2);
+}
+
+function countWords() {
+  let words = text.value.trim().split(/\s+/).length;
+  wordResult.innerText = "Words: " + words;
+}
+</script>
+
+</body>
+</html>
